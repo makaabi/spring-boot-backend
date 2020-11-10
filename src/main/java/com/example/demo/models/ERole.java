@@ -1,0 +1,9 @@
+package com.example.demo.models;
+
+public enum ERole {
+	ROLE_PARENT,
+	ROLE_PROFESSEUR,
+	ROLE_SERVEUILLANTE,
+	ROLE_SERVEUILLANTE_GENERALE,
+	ROLE_SECRETARIA
+}
