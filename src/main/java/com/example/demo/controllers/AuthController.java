@@ -68,7 +68,12 @@ public class AuthController {
                 userDetails.getId(),
                 userDetails.getUsername(),
                 userDetails.getEmail(),
-                roles));
+                userDetails.getNom(),
+                userDetails.getPrenom(),
+                userDetails.getAdresse(),
+                userDetails.getNumtel(),
+                roles
+                ));
     }
 
     @PostMapping("/signup")
@@ -86,9 +91,16 @@ public class AuthController {
         }
 
         // Create new user's account
-        User user = new User(signUpRequest.getUsername(),
+        User user = new User(
+        		signUpRequest.getId(),
+        		signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
-                encoder.encode(signUpRequest.getPassword()));
+                encoder.encode(signUpRequest.getPassword()),
+                signUpRequest.getNom(),
+                signUpRequest.getPrenom(),
+                signUpRequest.getAdresse(),
+                signUpRequest.getNumtel()
+                );
 
         Set<String> strRoles = signUpRequest.getRoles();
         Set<Role> roles = new HashSet<>();

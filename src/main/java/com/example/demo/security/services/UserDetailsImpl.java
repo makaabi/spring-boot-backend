@@ -17,7 +17,16 @@ public class UserDetailsImpl implements UserDetails{
     private String username;
 
     private String email;
-    private User user;
+    private String nom;
+    private String prenom;
+    private String adresse;
+    private String numtel;
+    
+    
+    
+   
+
+	private User user;
 
     @JsonIgnore
     private String password;
@@ -25,13 +34,21 @@ public class UserDetailsImpl implements UserDetails{
     private Collection<? extends GrantedAuthority> authorities;
 
     public UserDetailsImpl(String id, String username, String email, String password,
+    		String nom,String prenom,String adresse,String numtel,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.authorities = authorities;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+        this.numtel = numtel;
+        
+        this.authorities  = authorities ;
     }
+    
+   
 
     public static UserDetailsImpl build(User user) {
         List<GrantedAuthority> authorities = user.getRoles().stream()
@@ -43,6 +60,10 @@ public class UserDetailsImpl implements UserDetails{
                 user.getUsername(),
                 user.getEmail(),
                 user.getPassword(),
+                user.getNom(),
+                user.getPrenom(),
+                user.getAdresse(),
+                user.getNumtel(),
                 authorities);
     }
 
@@ -69,6 +90,46 @@ public class UserDetailsImpl implements UserDetails{
         return username;
     }
 
+    
+    
+    
+    
+    public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+
+
+
+	public String getNumtel() {
+		return numtel;
+	}
+
+	public void setNumtel(String numtel) {
+		this.numtel = numtel;
+	}
+    
+    
+    
     @Override
     public boolean isAccountNonExpired() {
         return true;

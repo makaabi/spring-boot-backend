@@ -26,6 +26,26 @@ public class User {
     @NotBlank
     @Size(max = 120)
     private String password;
+    
+    
+
+
+    @NotBlank
+    @Size(max = 50)
+    private String nom;
+    
+    @NotBlank
+    @Size(max = 50)
+    private String prenom;
+    
+    @NotBlank
+    @Size(max = 50)
+    private String adresse;
+    
+    @NotBlank
+    @Size(max = 20)
+    private String numtel;
+    
 
     @DBRef
     private Set<Role> roles = new HashSet<>();
@@ -33,13 +53,26 @@ public class User {
     public User() {
     }
 
-    public User(String username, String email, String password) {
-        this.username = username;
-        this.email = email;
-        this.password = password;
-    }
+ 
+    public User(String id, @NotBlank @Size(max = 20) String username, @NotBlank @Size(max = 50) @Email String email,
+			@NotBlank @Size(max = 120) String password, @NotBlank @Size(max = 50) String nom,
+			@NotBlank @Size(max = 50) String prenom, @NotBlank @Size(max = 50) String adresse,
+			@NotBlank @Size(max = 20) String numtel) {
+		super();
+		this.id = id;
+		this.username = username;
+		this.email = email;
+		this.password = password;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.adresse = adresse;
+		this.numtel = numtel;
+	}
 
-    public String getId() {
+
+
+
+	public String getId() {
         return id;
     }
 
@@ -70,6 +103,40 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    
+ 
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public String getPrenom() {
+		return prenom;
+	}
+
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
+	public String getNumtel() {
+		return numtel;
+	}
+
+	public void setNumtel(String numtel) {
+		this.numtel = numtel;
+	}
 
     public Set<Role> getRoles() {
         return roles;
